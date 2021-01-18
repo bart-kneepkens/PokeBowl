@@ -1,6 +1,7 @@
 # PokeBowl
 
 PokeBowl helps you to expand you knowledge of Pokemon.
+
 Inspired by the game in early pokemon episodes, it lets you guess pokemons from their silhouette! 
 
 ![demo play](docs/img/WhoIsThatPokemon.gif "")
@@ -15,5 +16,5 @@ Inspired by the game in early pokemon episodes, it lets you guess pokemons from 
 - Proper error handling
 - Caching
 
-### Note
+## Note
 During development I've found at least 1 pokemon that is listed in PokeAPI's Generations that has an actual UR which returns a 404. In this case, the pokedex might keep on loading due to lack of error handling!
