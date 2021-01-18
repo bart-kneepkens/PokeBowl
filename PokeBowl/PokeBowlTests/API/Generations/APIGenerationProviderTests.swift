@@ -49,6 +49,7 @@ extension APIGenerationProviderTests {
             counter += 1
             
             return Just((data: data, response: URLResponse()))
+                .delay(for: 0.5, scheduler: RunLoop.main)
                 .mapError({ _ in URLError(URLError.Code.cancelled )})
                 .eraseToAnyPublisher()
         }

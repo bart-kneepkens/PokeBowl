@@ -25,15 +25,15 @@ class WhoIsThatPokemonViewModel: ObservableObject {
     var numberOfPokemonCompleted: Int { completedPokemonNames.count }
     
     private var generation: Generation
-    private var disposable: AnyCancellable? = nil
+    private var cancellable: AnyCancellable? = nil
     private var pokemonProvider: PokemonProvider
     private var completedPokemonNames: [String] = []
     
     private var currentPokemon: Pokemon? {
-        switch self.state {
-        case .playing(let pokemon): return pokemon
-        default: return nil
+        if case .playing(let pokemon) = self.state {
+            return pokemon
         }
+        return nil
     }
     
     init(generation: Generation, pokemonProvider: PokemonProvider) {
@@ -44,13 +44,12 @@ class WhoIsThatPokemonViewModel: ObservableObject {
     
     func fetchPokemon() {
         guard case .initial = state else { return }
-
         
         self.state = .loading
         
         guard let pokemonName = self.options.randomElement() else { return }
         
-        self.disposable = self.pokemonProvider
+        self.cancellable = self.pokemonProvider
             .fetchPokemon(by: pokemonName)
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { result in }, receiveValue: { pokemon in

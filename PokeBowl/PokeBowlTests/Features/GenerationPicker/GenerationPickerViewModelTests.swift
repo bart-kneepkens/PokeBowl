@@ -61,7 +61,7 @@ class GenerationPickerViewModelTests: XCTestCase {
         
         // Should go to .loaded at some point in time
         let expectation = self.expectation(description: "Goes to .loaded")
-        let disposable = viewModel.$state.sink { state in
+        let cancellable = viewModel.$state.sink { state in
             if case .loaded(let generations) = state {
                 if generations == [self.mockGeneration] {
                     expectation.fulfill()

@@ -28,10 +28,10 @@ struct GenerationPickerView: View {
     }
     
     @ViewBuilder private var contents: some View {
-        switch self.viewModel.state {
-        case .loaded(let generations):
+        if case .loaded(let generations) = self.viewModel.state {
             self.generationsSections(for: generations)
-        default: ProgressView()
+        } else {
+            ProgressView()
         }
     }
     

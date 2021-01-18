@@ -17,12 +17,12 @@ class GenerationPickerViewModel: ObservableObject {
     }
     
     @Published var state: State = .initial
-    private var disposable: AnyCancellable? = nil
+    private var cancellable: AnyCancellable? = nil
     private var generationProvider: GenerationProvider
     
     init(generationProvider: GenerationProvider) {
         self.generationProvider = generationProvider
-        self.disposable = generationProvider
+        self.cancellable = generationProvider
             .generations
             .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in }, receiveValue: { generations in

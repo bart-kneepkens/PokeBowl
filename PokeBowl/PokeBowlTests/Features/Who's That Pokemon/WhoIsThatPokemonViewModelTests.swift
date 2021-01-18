@@ -62,7 +62,7 @@ class WhoIsThatPokemonViewModelTests: XCTestCase {
         let expectation = self.expectation(description: "state is changed to .playing")
         
         let viewModel = WhoIsThatPokemonViewModel(generation: self.mockGeneration, pokemonProvider: MockPokemonProvider(returnValue: mockPokemon))
-        let disposable = viewModel.$state.sink { state in
+        let cancellable = viewModel.$state.sink { state in
             switch state {
             case .playing:
                 expectation.fulfill()

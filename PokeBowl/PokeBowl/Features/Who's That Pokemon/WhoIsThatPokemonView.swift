@@ -127,7 +127,7 @@ extension WhoIsThatPokemonView {
             .foregroundColor(color)
             .frame(width: size, height: size)
             .overlay(Circle().strokeBorder(lineWidth: 2))
-            .shadow(color: .gray, radius: 2, x: 1, y: 1)
+            .shadow(color: color.opacity(0.5), radius: 2, x: 1, y: 1)
     }
 }
 
