@@ -85,7 +85,7 @@ extension WhoIsThatPokemonView {
             // Gray bezel
             RoundedRectangle(cornerRadius: defaultCornerRadius, style: .continuous)
                 .foregroundColor(Color("PokedexGray"))
-                .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(lineWidth: 2))
+                .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(Color.black, lineWidth: 2))
             
             VStack {
                 // Center top two red lights
@@ -98,7 +98,7 @@ extension WhoIsThatPokemonView {
                 // content screen
                 RoundedRectangle(cornerRadius: defaultCornerRadius)
                     .foregroundColor(Color.white)
-                    .overlay(RoundedRectangle(cornerRadius: defaultCornerRadius).strokeBorder(lineWidth: 2))
+                    .overlay(RoundedRectangle(cornerRadius: defaultCornerRadius).strokeBorder(Color.black, lineWidth: 2))
                     .overlay(pokedexScreenContent)
                 
                 // Bottom bezel contents
@@ -110,7 +110,7 @@ extension WhoIsThatPokemonView {
                     VStack(spacing: 5) { // speaker
                         ForEach(0..<4) { _ in
                             RoundedRectangle(cornerRadius: defaultCornerRadius)
-                                .frame(width: 20, height: 5)
+                                .frame(width: 20, height: 5).foregroundColor(.black)
                         }
                     }
                 }
@@ -126,8 +126,8 @@ extension WhoIsThatPokemonView {
         Circle()
             .foregroundColor(color)
             .frame(width: size, height: size)
-            .overlay(Circle().strokeBorder(lineWidth: 2))
-            .shadow(color: color.opacity(0.5), radius: 2, x: 1, y: 1)
+            .overlay(Circle().strokeBorder(Color.black, lineWidth: 2))
+            .shadow(color: color.opacity(0.5), radius: 1, x: 1, y: 1)
     }
 }
 
